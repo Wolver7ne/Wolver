@@ -1,234 +1,120 @@
+<?php
 
+error_reporting(0);
+$saldo = 9999;
+
+?>
 <!DOCTYPE html>
-<html class="loading">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="pt">
+<head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">    
-    <title>WOLVERINY CENTER</title>
-    <link rel="apple-touch-icon" href="theme-assets/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="theme-assets/images/ico/favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="theme-assets/css/vendors.css">
-    <link rel="stylesheet" type="text/css" href="theme-assets/css/app-lite.css">
-    <link rel="stylesheet" type="text/css" href="theme-assets/css/core/menu/menu-types/vertical-menu.css">
-    <link rel="stylesheet" type="text/css" href="theme-assets/css/core/colors/palette-gradient.css">
-    	 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-  </head>
-  <body class="vertical-layout" data-color="bg-gradient-x-purple-blue">   
-    <div class="app-content content">
-      <div class="content-wrapper">
-        <div class="content-wrapper-before mb-3">        	
-        </div>        
-  <div class="content-body">
-  	<div class="mt-2"></div>
-	<div class="row">
-		<div class="col-md-8">
-			<div class="card">
-				<div class="card-body text-center">
-					<h4 class="mb-2"><strong>CHECKER ALLBINS</strong></h4>
-<textarea rows="6" class="form-control text-center form-checker mb-2" placeholder="Insira sua Lista"></textarea>												
-					<button class="btn btn-success btn-play text-white" style="width: 49%; float: left;"><i class="fa fa-play"></i> INICIAR</button>
-					<button class="btn btn-danger btn-stop text-white" style="width: 49%; float: right;" disabled><i class="fa fa-stop"></i> PARAR</button>
-				</div>
-			</div>
-		</div>
-<div class="col-md-4">
-  <div class="card mb-2">
-  	<div class="card-body">
-<h5>Aprovadas:<span class="badge badge-success float-right aprovadas">0</span></h5><hr>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://telegra.ph/file/daff0a64a1c6dbf019a4c.jpg">
+    <title>PladixCentral | Checker Validador Itaú</title>
+    <link rel="stylesheet" href="./assets/css/vendors_css.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/skin_color.css">
 
-<h5>Reprovadas:<span class="badge badge-danger float-right reprovadas">0</span></h5><hr>
+<style type="text/css">
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #71199a;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #013137;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+</style>
 
-<h5>Testadas:<span class="badge badge-info float-right testadas">0</span></h5><hr>
-
-<h5>Carregadas:<span class="badge badge-primary float-right carregadas">0</span></h5><hr>
-
-<h5>Criador:<span class="badge badge-dark float-right saldo">@Wolveriny</span></h5>
-                  </div> 
+</head>
+<body class="dark-skin theme-primary">
+    <section class="content">
+        <div class="row">
+            <div class="col-md-9" style="margin: auto;">
+                <div class="box">
+                    <div class="box-body">
+                        <h4 class="text-center text-white"><i class="fa fa-hashtag"></i> <b> CHECKER ALLBINS </b></h4>
+                        <p class="text-center text-white">
+                            <i class="fa fa-code"></i> <a href="https://t.me/pladixoficial"> <font class="text-center text-white"> @Wolveriny <i class="fa fa-code"></i></font></a>
+                        </p>
+                        <hr>
+                        <p class="text-white mb-4">
+                            STATUS: <span id="status" class="float-right"><font class="badge badge-dark">Não Iniciado!</font></span>
+                        </p>
+                        <p class="text-white mb-4">
+                         <font class="text-warning float-right"></font>
+                        </p>
+                        <p class="text-white mb-4">
+                            LIMITE: <font class="text-warning float-right">200 Linhas</font>
+                        </p>
+                        <p class="text-white mb-4">
+                            CRÉDITOS: <font class="text-warning float-right">@Wolveriny</font>
+                        </p>
+                        <button id="start" class="btn btn-info float-left" style="width: 48%;"><i class="fa fa-play"></i> INICIAR</button>
+                        <button id="stop" class="btn btn-info float-right" style="width: 48%;" disabled=""><i class="fa fa-stop"></i> PARAR</button>
+                    </div>
                 </div>
-              </div>
-            
-		<div class="col-xl-12">
-			<div class="card">
-				<div class="card-body">
-					<div class="float-right">
-						<button type="show" class="btn btn-primary btn-sm show-lives"><i class="fa fa-eye-slash"></i></button>
-					<button class="btn btn-success btn-sm btn-copy"><i class="fa fa-copy"></i></button>					
-					</div>
-					<h4 class="card-title mb-1"><i class="fa fa-check text-success"></i> Aprovadas</h4>					
-			<div id='lista_aprovadas'></div>
-				</div>				
-			</div>
-		</div>
-		<div class="col-xl-12">
-			<div class="card">
-				<div class="card-body">
-					<div class="float-right">
-						<button type='hidden' class="btn btn-primary btn-sm show-dies"><i class="fa fa-eye"></i></button>
-					<button class="btn btn-danger btn-sm btn-trash"><i class="fa fa-trash"></i></button>					
-					</div>
-					<h4 class="card-title mb-1"><i class="fa fa-times text-danger"></i> Reprovadas</h4>		
-						<div style='display: none;' id='lista_reprovadas'></div>
-				</div>				
-			</div>
-		</div>
-</section>
+            </div>
+
+            <div class="col-md-9" style="margin: auto;">
+                <div class="card ">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist" style="border: none;">
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" style="border: none;" id="home-tab" data-toggle="tab" href="#tab-list" role="tab" aria-controls="tab-list" aria-selected="true"><i class="fa fa-cogs "></i> <b><span id="testado">0</span>/<span id="total">0</span></b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="border: none;" id="profile-tab" data-toggle="tab" href="#tab-lives" role="tab" aria-controls="tab-lives" aria-selected="false"><i class="fa fa-thumbs-up fa-lg "></i> <b id="lives">0</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" style="border: none;" id="contact-tab" data-toggle="tab" href="#tab-dies" role="tab" aria-controls="tab-dies" aria-selected="false"><i class="fa fa-thumbs-down fa-lg "></i> <b id="dies">0</b></a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active px-3 pt-4 pb-3 text-center" id="tab-list" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="container-fluid p-0 mt-2">
+                                <textarea id="list" rows="8"  id="list" limite="800" class="form-control text-center" style="resize: none;" placeholder="Insira Sua Lista!"></textarea>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show px-3 pt-4 pb-3" role="tabpanel" id="tab-lives" aria-labelledby="home-tab">
+                            <div id="aprovadas" style="overflow:auto; max-height: 500px;"></div>
+                        </div>
+                        <div class="tab-pane fade show px-3 pt-4 pb-3" role="tabpanel" id="tab-dies" aria-labelledby="home-tab">
+                            <div id="reprovadas" style="overflow:auto; max-height: 500px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
- 
-    <script src="theme-assets/js/core/libraries/jquery.min.js" type="text/javascript"></script>
-
-<script>
-
-$(document).ready(function(){
-
-Swal.fire({ title: "AVISO", text: " Limite de 100 linhas ", icon: "warning", confirmButtonText: "OK", buttonsStyling: false, confirmButtonClass: 'btn btn-primary'});
-
-
-getSaldo();
-
-$('.show-lives').click(function(){
-var type = $('.show-lives').attr('type');
-$('#lista_aprovadas').slideToggle();
-if(type == 'show'){
-$('.show-lives').html('<i class="fa fa-eye"></i>');
-$('.show-lives').attr('type', 'hidden');
-}else{
-$('.show-lives').html('<i class="fa fa-eye-slash"></i>');
-$('.show-lives').attr('type', 'show');
-}});
-
-$('.show-dies').click(function(){
-var type = $('.show-dies').attr('type');
-$('#lista_reprovadas').slideToggle();
-if(type == 'show'){
-$('.show-dies').html('<i class="fa fa-eye"></i>');
-$('.show-dies').attr('type', 'hidden');
-}else{
-$('.show-dies').html('<i class="fa fa-eye-slash"></i>');
-$('.show-dies').attr('type', 'show');
-}});
-
-$('.btn-trash').click(function(){
-	Swal.fire({title: 'Lista de Reprovadas Limpa!', icon: 'success', showConfirmButton: false, toast: true, position: 'top-end', timer: 3000});
-$('#lista_reprovadas').text('');
-});
-
-$('.btn-copy').click(function(){
-	Swal.fire({title: 'Lista de Aprovadas Copiada!', icon: 'success', showConfirmButton: false, toast: true, position: 'top-end', timer: 3000});
-var lista_lives = document.getElementById('lista_aprovadas').innerText;
-var textarea = document.createElement("textarea");
-textarea.value = lista_lives;
-document.body.appendChild(textarea); 
-textarea.select(); 
-document.execCommand('copy');           document.body.removeChild(textarea); 
-});
-
-
-$('.btn-play').click(function(){
-
-var lista = $('.form-checker').val().trim();
-var array = lista.split('\n');
-var lives = 0, dies = 0, testadas = 0, txt = '';
-
-if(!lista){
-	Swal.fire({title: 'Erro: Lista Vazia!', icon: 'error', showConfirmButton: false, toast: true, position: 'top-end', timer: 3000});
-	return false;
-}
-
-Swal.fire({title: 'Teste Iniciado!', icon: 'success', showConfirmButton: false, toast: true, position: 'top-end', timer: 3000});
-
-var line = array.filter(function(value){
-if(value.trim() !== ""){
-	txt += value.trim() + '\n';
-	return value.trim();
-}
-});
-
-/*
-var line = array.filter(function(value){
-return(value.trim() !== "");
-});
-*/
-
-var total = line.length;
-
-/*
-line.forEach(function(value){
-txt += value + '\n';
-});
-*/
-
-$('.form-checker').val(txt.trim());
-
-if(total > 100){
-	Swal.fire({title: 'Limite de Linhas Exedido!', icon: 'warning', showConfirmButton: false, toast: true, position: 'top-end', timer: 3000});
-	return false;
-}
-
-$('.carregadas').text(total);
-$('.btn-play').attr('disabled', true);
-$('.btn-stop').attr('disabled', false);
-
-
-var audioLive = new Audio('live.mp3');
-
-line.forEach(function(data){
-var callBack = $.ajax({
-	url: 'api.php?lista=' + data,
-	success: function(retorno){
-		if(retorno.indexOf("Aprovada") >= 0){
-			Swal.fire({title: '+1 Aprovada!', icon: 'success', showConfirmButton: false, toast: true, position: 'top-end', timer: 3000});
-			$('#lista_aprovadas').append(retorno);
-			removelinha();
-			getSaldo();
-			lives = lives +1;
-			audioLive.play();
-		}else{
-			$('#lista_reprovadas').append(retorno);
-			removelinha();
-			dies = dies +1;
-		}
-		testadas = lives + dies;
-		$('.aprovadas').text(lives);
-		$('.reprovadas').text(dies);
-		$('.testadas').text(testadas);
-		
-		if(testadas == total){
-			Swal.fire({title: 'Teste Finalizado!', icon: 'success', showConfirmButton: false, toast: true, position: 'top-end', timer: 3000});
-			$('.btn-play').attr('disabled', false);
-			$('.btn-stop').attr('disabled', true);
-		}
-        }
-      });
-      $('.btn-stop').click(function(){
-      Swal.fire({title: 'Teste Parado!', icon: 'warning', showConfirmButton: false, toast: true, position: 'top-end', timer: 3000});
-      $('.btn-play').attr('disabled', false);
-      $('.btn-stop').attr('disabled', true);      
-      	callBack.abort();
-      	return false;
-      });
-    });
-  });
-});
-
-function removelinha() {
-var lines = $('.form-checker').val().split('\n');
-lines.splice(0, 1);
-$('.form-checker').val(lines.join("\n"));
-}
-
-function getSaldo(){
-$.get('../getSaldo.php', function(saldo){
-	$('.saldo').text(saldo);
-});
-}
-   
-  
-	
-</script>
-  </body>
+    </section>
+    <script src="./assets/js/vendors.min.js"></script>
+    <script src="./assets/vendors/icons/feather-icons/feather.min.js"></script>
+    <script src="./assets/vendors/vendor_components/toastr/src/jquery.toast.js"></script>
+    <script src="./assets/js/pages/checkers.js" type="text/javascript"></script>
+</body>
 </html>
